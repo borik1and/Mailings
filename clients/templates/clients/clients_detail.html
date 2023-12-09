@@ -1,0 +1,36 @@
+{% extends 'clients/base.html' %}
+{% block content %}
+
+
+<div class="row">
+    <div class="-col-12">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Имя: "{{ object.name }}" ({{object.slug}})
+                        </h3>
+                        <div class="card-body">
+                            <p>
+                                Фамилия: {{ object.surname }}
+                            </p>
+                            <p>
+                                Почта: {{ object.email }}
+                            </p>
+                            <p>
+                                Комментарий: {{ object.comments }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block title %}
+Материал
+{% endblock %}
