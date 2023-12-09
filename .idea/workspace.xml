@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f53630b-ddc2-4cac-8b4d-f81033249b36" name="Changes" comment="add code">
-      <change afterPath="$PROJECT_DIR$/clients/templates/clients/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clients/templates/clients/clients_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clients/templates/clients/clients_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clients/templates/clients/clients_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clients/templates/clients/clients_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="6f53630b-ddc2-4cac-8b4d-f81033249b36" name="Changes" comment="add code" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,7 +75,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702041190422</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add code">
+      <option name="closed" value="true" />
+      <created>1702111028494</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702111028494</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
