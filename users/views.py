@@ -7,9 +7,9 @@ from pytils.translit import slugify
 
 class UsersCreateView(CreateView):
     model = Users
-    fields = ('name', 'father_name', 'surname', 'comments', 'email')
-    template_name = 'user/user_form.html'
-    success_url = reverse_lazy('user:list')
+    fields = ('name', 'father_name', 'surname', 'comments', 'email', 'password')
+    template_name = 'users/users_form.html'
+    success_url = reverse_lazy('users:list')
 
     def form_valid(self, form):
         if form.is_valid():
@@ -41,7 +41,7 @@ class UsersDetailView(DetailView):
 
 class UsersUpdateView(UpdateView):
     model = Users
-    fields = ('name', 'father_name', 'surname', 'comments', 'email')
+    fields = ('name', 'father_name', 'surname', 'comments', 'email', 'password')
     template_name = 'users/users_form.html'
     success_url = reverse_lazy('users:list')
     queryset = Users.objects.all()
@@ -60,5 +60,5 @@ class UsersUpdateView(UpdateView):
 
 class UsersDeleteView(DeleteView):
     model = Users
-    success_url = reverse_lazy('clients:list')
+    success_url = reverse_lazy('users:list')
 
