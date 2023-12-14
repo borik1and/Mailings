@@ -1,14 +1,12 @@
-from django.core.mail import send_mail, send_mass_mail
+from django.core.mail import send_mail
+from config import settings
 
 
-def send(user_mail):
+def send(user_mails):
     send_mail(
-        'Test',
-        'Test message',
-        'borik1and@gmail.com',
-        [user_mail],
+        'Test Subject',
+        'Test новое письмо',
+        settings.EMAIL_HOST_USER,
+        user_mails,  # Передаем список адресов как аргумент
         fail_silently=False,
     )
-
-
-send('borik1and@gmail.com')

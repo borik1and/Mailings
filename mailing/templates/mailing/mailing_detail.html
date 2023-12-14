@@ -1,0 +1,42 @@
+{% extends 'clients/base.html' %}
+{% block content %}
+
+
+<div class="row">
+    <div class="-col-12">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Тема: {{ object.subject}}
+                        </h3>
+                        <div class="card-body">
+                            <p>
+                                С: {{ object.mailing_start_time }}
+                            </p>
+                            <p>
+                                ДО: {{ object.mailing_stop_time }}
+                            </p>
+                            <p>
+                                Периодичность: {{ object.period }}
+                            </p>
+                            <p>
+                                Статус: {{ object.status }}
+                            </p>
+                            <p>
+                                Сообщение: {{ object.content}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block title %}
+    рассылка детали
+{% endblock %}
