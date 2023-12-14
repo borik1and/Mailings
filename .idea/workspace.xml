@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f53630b-ddc2-4cac-8b4d-f81033249b36" name="Changes" comment="changing code in users">
-      <change afterPath="$PROJECT_DIR$/mailing/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailing/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailing/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailing/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailing/templates/email.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailing/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailing/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailing/views.py" afterDir="false" />
+    <list default="true" id="6f53630b-ddc2-4cac-8b4d-f81033249b36" name="Changes" comment="add app Mailing">
+      <change afterPath="$PROJECT_DIR$/mailing/service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailing/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailing/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -48,6 +44,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.service.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
@@ -64,10 +61,39 @@
       <recent name="$PROJECT_DIR$/clients/templates/clients" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="service" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="mailings" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mailing" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mailing/service.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.service" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-67fca87a943a-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.11799.259" />
+        <option value="bundled-python-sdk-7a29c1521ef0-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.11799.298" />
       </set>
     </attachedChunks>
   </component>
@@ -120,13 +146,30 @@
       <option name="project" value="LOCAL" />
       <updated>1702314991452</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add app Mailing">
+      <option name="closed" value="true" />
+      <created>1702393494455</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1702393494455</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add app Mailing">
+      <option name="closed" value="true" />
+      <created>1702393577559</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1702393577559</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add code" />
     <MESSAGE value="add app users" />
     <MESSAGE value="changing code in users" />
-    <option name="LAST_COMMIT_MESSAGE" value="changing code in users" />
+    <MESSAGE value="add app Mailing" />
+    <option name="LAST_COMMIT_MESSAGE" value="add app Mailing" />
   </component>
 </project>
