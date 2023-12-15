@@ -5,23 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f53630b-ddc2-4cac-8b4d-f81033249b36" name="Changes" comment="changing code">
-      <change afterPath="$PROJECT_DIR$/mailing/templates/mailing/mailing_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailing/templates/mailing/mailing_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailing/templates/mailing/mailing_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailing/templates/mailing/mailing_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/cron.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mailing/management/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mailing/management/commands/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mailing/management/commands/send_emails.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clients/templates/clients/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/clients/templates/clients/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mailing/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mailing/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mailing/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mailing/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mailing/templates/email.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mailing/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mailing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/cron.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/cron.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,16 +45,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.service.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/boris/PycharmProjects/mailings/mailing/templates"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.service.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/boris/PycharmProjects/mailings/mailing/templates&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/mailing/templates" />
@@ -69,6 +63,7 @@
       <recent name="$PROJECT_DIR$/static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mailing" />
       <recent name="$PROJECT_DIR$/mailing/templates/mailing" />
       <recent name="$PROJECT_DIR$/clients/templates/clients" />
     </key>
@@ -182,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702557319117</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="changing code">
+      <option name="closed" value="true" />
+      <created>1702576938603</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1702576938603</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

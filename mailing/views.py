@@ -1,11 +1,10 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
-from django.shortcuts import redirect
+# from django.shortcuts import redirect
 from pytils.translit import slugify
 
 from mailing.models import Mailing
-from mailing.service import send
 
 
 class MailingCreateView(CreateView):
@@ -25,11 +24,6 @@ class MailingCreateView(CreateView):
 
 class MailingListView(ListView):
     model = Mailing
-
-    # def get_queryset(self, *args, **kwargs):
-    #     queryset = super().get_queryset(*args, **kwargs)
-    #     queryset = queryset.filter(publication=True)
-    #     return queryset
 
 
 class MailingDetailView(DetailView):
@@ -64,8 +58,3 @@ class MailingUpdateView(UpdateView):
 class MailingDeleteView(DeleteView):
     model = Mailing
     success_url = reverse_lazy('mailing:list')
-
-
-def send_mail(request):
-    send(["borik1and@gmail.com", "borik1@msn.com"])
-    return redirect('mailing:list')

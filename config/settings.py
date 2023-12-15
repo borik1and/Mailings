@@ -90,7 +90,7 @@ DATABASES = {
 
 
 CRONJOBS = [
-    ('*/5 * * * *', 'myapp.cron.my_scheduled_job')
+    ('* 1 * * *', 'python manage.py send_emails')
 ]
 
 # Password validation

@@ -26,6 +26,7 @@ class Mailing(models.Model):
     mailing_stop_time = models.DateTimeField(default=datetime.now, verbose_name='Время окончания рассылки')
     period = models.CharField(default="daily", max_length=20, choices=PERIODS, verbose_name='Периодичность')
     status = models.CharField(default=STATUS_CREATED, max_length=20, choices=STATUSES, verbose_name='Статус')
+    last_executed = models.DateTimeField(null=True, blank=True, verbose_name='Время последнего выполнения')
 
     def __str__(self):
         return f'Тема: {self.subject} С: {self.mailing_start_time} до:  {self.mailing_stop_time} периодичностью в: {self.period}'
