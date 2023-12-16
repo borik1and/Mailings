@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 from django.utils import timezone
+from datetime import datetime
 from mailing.models import Mailing
 from clients.models import Clients
 from django.core.mail import send_mail
@@ -10,7 +11,7 @@ class Command(BaseCommand):
     help = 'Send emails to clients for active mailings'
 
     def handle(self, *args, **options):
-        now = timezone.now()
+        now = datetime.now(timezone.utc)
         mailings_to_send = Mailing.objects.filter(
             mailing_start_time__lte=now,
             mailing_stop_time__gte=now,
@@ -18,39 +19,48 @@ class Command(BaseCommand):
         )
 
         for mailing in mailings_to_send:
-            if mailing.last_executed and mailing.period == 'daily':
-                # Проверка, выполнялась ли команда ранее и установлена ли она на ежедневное выполнение
-                time_difference = now - mailing.last_executed
-                if time_difference.days < 1:
-                    # Если прошло менее 1 дня с последнего выполнения, пропустить эту рассылку
+            try:
+                if mailing.last_executed and self.should_skip_mailing(mailing, now):
                     continue
 
-            elif mailing.last_executed and mailing.period == 'weekly':
-                # Проверка для еженедельного выполнения
-                time_difference = now - mailing.last_executed
-                if time_difference.days < 7:
-                    # Если прошло менее 7 дней с последнего выполнения, пропустить эту рассылку
-                    continue
+                clients_to_notify = Clients.objects.all()
+                user_emails = [client.email for client in clients_to_notify]
 
-            elif mailing.last_executed and mailing.period == 'monthly':
-                # Проверка для ежемесячного выполнения
-                time_difference = now - mailing.last_executed
-                if time_difference.days < 30:
-                    # Если прошло менее 30 дней с последнего выполнения, пропустить эту рассылку
-                    continue
+                status = send_mail(
+                    mailing.subject,
+                    mailing.content,
+                    settings.EMAIL_HOST_USER,
+                    user_emails,
+                    fail_silently=False,
+                )
 
-            clients_to_notify = Clients.objects.all()  # Подставьте здесь ваш запрос для выбора нужных клиентов
-            user_emails = [client.email for client in clients_to_notify]
+                mailing.last_executed = datetime.now()
+                mailing.attempt_status = status
 
-            send_mail(
-                mailing.subject,
-                mailing.content,
-                settings.EMAIL_HOST_USER,
-                user_emails,
-                fail_silently=False,
-            )
+                # Сохраняем ответ сервера в поле server_response
+                # mailing.server_response = 'Success'  # Или используйте фактический ответ сервера, если есть
+                mailing.save()
 
-            mailing.last_executed = now
-            mailing.save()
+                self.stdout.write(self.style.SUCCESS(f'Письмо с названием: {mailing.subject} отправлено.'))
+            except Exception as e:
+                # Обработка ошибок при отправке почты
+                mailing.attempt_status = status
+                mailing.save()
 
-            self.stdout.write(self.style.SUCCESS(f'Emails sent for Mailing: {mailing.subject}'))
+                # Сохраняем ответ сервера в поле server_response
+                mailing.server_response = str(e)
+                mailing.save()
+
+                self.stdout.write(self.style.ERROR(f'Ошибка при отправке письма: {e}'))
+
+    def should_skip_mailing(self, mailing, now):
+        time_difference = now - mailing.last_executed
+
+        if mailing.period == 'daily' and time_difference.days < 1:
+            return True
+        elif mailing.period == 'weekly' and time_difference.days < 7:
+            return True
+        elif mailing.period == 'monthly' and time_difference.days < 30:
+            return True
+
+        return False

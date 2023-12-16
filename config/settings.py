@@ -90,7 +90,7 @@ DATABASES = {
 
 
 CRONJOBS = [
-    ('* 1 * * *', 'python manage.py send_emails')
+    ('1 * * * *', 'python3 manage.py send_emails')
 ]
 
 # Password validation
