@@ -11,7 +11,7 @@ class Command(BaseCommand):
     help = 'Send emails to clients for active mailings'
 
     def handle(self, *args, **options):
-        now = datetime.now(timezone.utc)
+        now = timezone.now()
         mailings_to_send = Mailing.objects.filter(
             mailing_start_time__lte=now,
             mailing_stop_time__gte=now,
@@ -38,14 +38,19 @@ class Command(BaseCommand):
                 mailing.attempt_status = status
 
                 # Сохраняем ответ сервера в поле server_response
-                # mailing.server_response = 'Success'  # Или используйте фактический ответ сервера, если есть
+                mailing.server_response = f'Письмо с названием: {mailing.subject} отправлено.'
                 mailing.save()
 
                 self.stdout.write(self.style.SUCCESS(f'Письмо с названием: {mailing.subject} отправлено.'))
             except Exception as e:
                 # Обработка ошибок при отправке почты
-                mailing.attempt_status = status
-                mailing.save()
+                if status == 0:
+                    mailing.attempt_status = f'Ошибка при отправке письма: {e}'
+                    mailing.save()
+
+                else:
+                    mailing.attempt_status = f'Письмо с названием: {mailing.subject} отправлено.'
+                    mailing.save()
 
                 # Сохраняем ответ сервера в поле server_response
                 mailing.server_response = str(e)

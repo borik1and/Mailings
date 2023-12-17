@@ -41,7 +41,8 @@ INSTALLED_APPS = [
 
     'clients',
     'users',
-    'mailing'
+    'mailing',
+
 ]
 
 MIDDLEWARE = [
@@ -90,7 +91,7 @@ DATABASES = {
 
 
 CRONJOBS = [
-    ('1 * * * *', 'python3 manage.py send_emails')
+    ('* * * * *', 'python3 manage.py send_emails', '>> /tmp/scheduled_job.log')
 ]
 
 # Password validation

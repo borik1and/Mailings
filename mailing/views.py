@@ -1,4 +1,4 @@
-# from django.shortcuts import render
+from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 # from django.shortcuts import redirect
@@ -25,6 +25,11 @@ class MailingCreateView(CreateView):
 
 class MailingListView(ListView):
     model = Mailing
+
+
+def mailing_log(request):
+    logs = Mailing.objects.all()
+    return render(request, 'mailing/mailing_loglist.html', {'mailing': logs})
 
 
 class MailingDetailView(DetailView):
