@@ -38,3 +38,16 @@ class Mailing(models.Model):
     class Meta:
         verbose_name = 'Рассылка'
         verbose_name_plural = 'Рассылки'
+
+
+class EmailLog(models.Model):
+    subject = models.CharField(max_length=255)
+    sent_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f'{self.subject} {self.sent_at} {self.status}'
+
+    class Meta:
+        verbose_name = 'Лог'
+        verbose_name_plural = 'Логи'

@@ -1,6 +1,30 @@
 {% extends 'clients/base.html' %}
 {% block content %}
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Тема сообщения</th>
+                  <th scope="col">Дата и время отправки</th>
+                  <th scope="col">Статус</th>
+                </tr>
+              </thead>
 
+              <tbody>
+                <div class="row">
+
+                    {% for log in logs %}
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>{{ log.subject }}</td>
+                        <td>{{ log.sent_at }}</td>
+                        <td>{{ log.status }}</td>
+                       </tr>
+                    {% endfor %}
+                </div>
+
+              </tbody>
+            </table>
 
 {% endblock %}
 

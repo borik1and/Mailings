@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 from datetime import datetime
-from mailing.models import Mailing
+from mailing.models import Mailing, EmailLog
 from clients.models import Clients
 from django.core.mail import send_mail
 from config import settings
@@ -42,6 +42,11 @@ class Command(BaseCommand):
                 mailing.save()
 
                 self.stdout.write(self.style.SUCCESS(f'Письмо с названием: {mailing.subject} отправлено.'))
+                # После успешной отправки письма
+                email_log = EmailLog.objects.create(
+                    subject=mailing.subject,
+                    status=status,
+                )
             except Exception as e:
                 # Обработка ошибок при отправке почты
                 if status == 0:

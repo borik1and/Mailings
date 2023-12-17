@@ -4,7 +4,7 @@ from django.views.generic import CreateView, ListView, DetailView, UpdateView, D
 # from django.shortcuts import redirect
 from pytils.translit import slugify
 from django.core.management import call_command
-from mailing.models import Mailing
+from mailing.models import Mailing, EmailLog
 
 
 class MailingCreateView(CreateView):
@@ -28,8 +28,9 @@ class MailingListView(ListView):
 
 
 def mailing_log(request):
-    logs = Mailing.objects.all()
-    return render(request, 'mailing/mailing_loglist.html', {'mailing': logs})
+    logs = EmailLog.objects.all()
+    return render(request, 'mailing/mailing_loglist.html', {'logs': logs})
+    # return render(request, 'mailing/mailing_loglist.html', {'mailing': logs})
 
 
 class MailingDetailView(DetailView):
