@@ -7,9 +7,7 @@
     <list default="true" id="6f53630b-ddc2-4cac-8b4d-f81033249b36" name="Changes" comment="changing code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mailing/management/commands/send_emails.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/management/commands/send_emails.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mailing/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mailing/templates/mailing/mailing_loglist.html" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/templates/mailing/mailing_loglist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mailing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +202,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702828235209</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="changing code">
+      <option name="closed" value="true" />
+      <created>1702832404528</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1702832404528</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

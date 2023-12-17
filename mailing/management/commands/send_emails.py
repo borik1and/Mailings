@@ -34,7 +34,7 @@ class Command(BaseCommand):
                     fail_silently=False,
                 )
 
-                mailing.last_executed = datetime.now()
+                mailing.last_executed = now
                 mailing.attempt_status = status
 
                 # Сохраняем ответ сервера в поле server_response
