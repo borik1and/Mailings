@@ -1,10 +1,5 @@
 from django.contrib import admin
 
-from users.models import Users
+from users.models import User
 
-
-@admin.register(Users)
-class UsersAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'email', 'name', 'surname')
-    list_filter = ('name', 'surname')
-
+admin.site.register(User)

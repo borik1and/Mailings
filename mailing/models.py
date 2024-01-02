@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.utils.datetime_safe import datetime
 
 NULLABLE = {'blank': True, 'null': True}
@@ -23,7 +24,7 @@ class Mailing(models.Model):
     subject = models.CharField(max_length=255, default='', verbose_name='Тема сообщения')
     content = models.TextField(default='', verbose_name='Текст сообщения')
     mailing_start_time = models.DateTimeField(default=datetime.now, verbose_name='Время начала рассылки')
-    mailing_stop_time = models.DateTimeField(default=datetime.now, verbose_name='Время окончания рассылки')
+    mailing_stop_time = models.DateTimeField(default=timezone.now() + timezone.timedelta(days=1), verbose_name='Время окончания рассылки')
     period = models.CharField(default="daily", max_length=20, choices=PERIODS, verbose_name='Периодичность')
     status = models.CharField(default=STATUS_CREATED, max_length=20, choices=STATUSES, verbose_name='Статус')
     last_executed = models.DateTimeField(**NULLABLE, verbose_name='Время последнего выполнения')

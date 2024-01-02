@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6f53630b-ddc2-4cac-8b4d-f81033249b36" name="Changes" comment="changing code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mailing/management/commands/send_emails.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/management/commands/send_emails.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mailing/templates/mailing/mailing_loglist.html" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/templates/mailing/mailing_loglist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailing/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +93,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-7a29c1521ef0-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.11799.298" />
+        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
       </set>
     </attachedChunks>
   </component>
@@ -210,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702832404528</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="changing code">
+      <option name="closed" value="true" />
+      <created>1702841606306</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1702841606306</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

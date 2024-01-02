@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+from decouple import Config, RepositoryEnv
 
 from email_pass import email_pass
 
@@ -20,8 +21,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-dx^n%_7r-ca*%1!b#zm8&#co2e&i2#32c1^-d5v+07ev#t#zu3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,15 +77,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+ENVPATH = BASE_DIR / '.env'
+print(ENVPATH)
+config = Config(RepositoryEnv(ENVPATH))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mailings',
         'HOST': 'localhost',
-        'USER': 'postgres',
-        'PASSWORD': '1975'
+        'USER': config('P_USER', default=''),
+        'PASSWORD': config('P_PASSWORD', default=''),
+
     }
 }
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = config('S_SECRET_KEY', default=''),
+
 # CRONJOBS программа для выполнения задач в режиме авто запуска
 
 
@@ -140,9 +148,27 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# email smtp
+
+AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = 'users/'
+
+# параметры email to send
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'borik1and@gmail.com'
-EMAIL_HOST_PASSWORD = email_pass
+EMAIL_HOST = config('EMAIL_HOST', default='')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 EMAIL_PORT = 587
+
+
+# Кеширование
+CACHE_ENABLED = True
+if CACHE_ENABLED:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION": "redis://127.0.0.1:6379",
+            "TIMEOUT": 300  # Ручная регулировка времени жизни кеша в секундах, по умолчанию 300
+        }
+    }
