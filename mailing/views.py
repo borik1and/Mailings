@@ -2,10 +2,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
-# from django.shortcuts import redirect
 from pytils.translit import slugify
 from django.core.management import call_command
 from mailing.models import Mailing, EmailLog
+from django.contrib.auth.decorators import login_required
 
 
 class MailingCreateView(LoginRequiredMixin, CreateView):
@@ -32,11 +32,6 @@ class MailingCreateView(LoginRequiredMixin, CreateView):
 
 class MailingListView(LoginRequiredMixin, ListView):
     model = Mailing
-
-    def mailing_log(request):
-        logs = EmailLog.objects.all()
-        return render(request, 'mailing/mailing_loglist.html', {'logs': logs})
-        # return render(request, 'mailing/mailing_loglist.html', {'mailing': logs})
 
 
 class MailingDetailView(LoginRequiredMixin, DetailView):
@@ -78,3 +73,9 @@ class MailingUpdateView(LoginRequiredMixin, UpdateView):
 class MailingDeleteView(LoginRequiredMixin, DeleteView):
     model = Mailing
     success_url = reverse_lazy('mailing:list')
+
+
+@login_required
+def mailing_log(request):
+    logs = EmailLog.objects.all()
+    return render(request, 'mailing/mailing_loglist.html', {'logs': logs})

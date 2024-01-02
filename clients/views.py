@@ -23,6 +23,14 @@ class ClientsCreateView(CreateView):
 
 class ClientsListView(LoginRequiredMixin, ListView):
     model = Clients
+    template_name = 'clients/clients_list.html'
+    context_object_name = 'client_list'
+
+    # def get_queryset(self):
+    #     # Фильтруем клиентов по пользователю (owner) текущего пользователя
+    #     return super().get_queryset().filter(
+    #         owner=self.request.user
+    #     )
 
     # def get_queryset(self, *args, **kwargs):
     #     queryset = super().get_queryset(*args, **kwargs)
