@@ -15,21 +15,10 @@ class User(AbstractUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
-    groups = models.ManyToManyField(
-        Group,
-        verbose_name='Группы',
-        blank=True,
-        help_text='Группы, к которым принадлежит пользователь. Пользователь получает все разрешения,'
-                  ' предоставленные каждой из его групп.',
-        related_name='custom_user_groups',
-        related_query_name='custom_user_group',
-    )
+    class Meta:
+        permissions = [
+            ("set_is_active", "Can set active"),
+        ]
 
-    user_permissions = models.ManyToManyField(
-        Permission,
-        verbose_name='Разрешения пользователя',
-        blank=True,
-        help_text='Конкретные разрешения для этого пользователя.',
-        related_name='custom_user_permissions',
-        related_query_name='custom_user_permission',
-    )
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
