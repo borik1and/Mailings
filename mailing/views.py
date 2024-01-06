@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
@@ -7,23 +8,24 @@ from django.core.management import call_command
 from mailing.models import Mailing, EmailLog
 
 
-class MailingCreateView(CreateView):
+class MailingCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Mailing
     fields = ('subject', 'mailing_start_time', 'mailing_stop_time', 'period', 'status', 'content')
-    # template_name = 'mailing/mailing_form.html'
+    permission_required = 'mailing.add_mailing'
     success_url = reverse_lazy('mailing:list')
 
     def form_valid(self, form):
         if form.is_valid():
-            new_mailing = form.save()
+            new_mailing = form.save(commit=False)
             new_mailing.slug = slugify(new_mailing.subject)
+            new_mailing.owner = self.request.user  # Установите владельца текущим пользователем
             new_mailing.save()
             call_command('send_emails')
 
         return super().form_valid(form)
 
 
-class MailingListView(ListView):
+class MailingListView(LoginRequiredMixin, ListView):
     model = Mailing
 
 
@@ -33,8 +35,9 @@ def mailing_log(request):
     # return render(request, 'mailing/mailing_loglist.html', {'mailing': logs})
 
 
-class MailingDetailView(DetailView):
+class MailingDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Mailing
+    permission_required = 'mailing.detail_mailing'
 
     # def get_object(self, queryset=None):
     #     obj = super().get_object(queryset)
@@ -43,10 +46,10 @@ class MailingDetailView(DetailView):
     #     return obj
 
 
-class MailingUpdateView(UpdateView):
+class MailingUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Mailing
     fields = ('subject', 'mailing_start_time', 'mailing_stop_time', 'period', 'status', 'content')
-    # template_name = 'mailing/mailing_form.html'
+    permission_required = 'mailing.change_mailing'
     success_url = reverse_lazy('mailing:list')
     queryset = Mailing.objects.all()
 
@@ -62,6 +65,7 @@ class MailingUpdateView(UpdateView):
         return reverse('mailing:view', args=[self.kwargs.get('pk')])
 
 
-class MailingDeleteView(DeleteView):
+class MailingDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Mailing
     success_url = reverse_lazy('mailing:list')
+    permission_required = 'mailing.delete_mailing'

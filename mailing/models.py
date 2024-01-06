@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.datetime_safe import datetime
 
+from users.models import User
+
 NULLABLE = {'blank': True, 'null': True}
 
 
@@ -29,6 +31,15 @@ class Mailing(models.Model):
     last_executed = models.DateTimeField(**NULLABLE, verbose_name='Время последнего выполнения')
     attempt_status = models.BooleanField(**NULLABLE, verbose_name='Статус попытки')
     server_response = models.TextField(**NULLABLE, verbose_name='Ответ сервера')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Владелец', default=1)
+
+    def save(self, *args, **kwargs):
+        # Если владелец не установлен, установите его в текущего вошедшего в систему пользователя
+        if not self.owner_id:
+            user = self.request.user
+            if user:
+                self.owner = user
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return (f'Тема: {self.subject} С: {self.mailing_start_time} '
@@ -36,6 +47,10 @@ class Mailing(models.Model):
                 f'Время последнего выполнения: {self.last_executed} Статус попытки: {self.attempt_status}')
 
     class Meta:
+        permissions = [
+            ("set_status", "Can set status"),
+        ]
+
         verbose_name = 'Рассылка'
         verbose_name_plural = 'Рассылки'
 

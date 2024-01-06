@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
@@ -20,8 +21,16 @@ class ClientsCreateView(CreateView):
         return super().form_valid(form)
 
 
-class ClientsListView(ListView):
+class ClientsListView(LoginRequiredMixin, ListView):
     model = Clients
+    template_name = 'clients/clients_list.html'
+    context_object_name = 'client_list'
+
+    # def get_queryset(self):
+    #     # Фильтруем клиентов по пользователю (owner) текущего пользователя
+    #     return super().get_queryset().filter(
+    #         owner=self.request.user
+    #     )
 
     # def get_queryset(self, *args, **kwargs):
     #     queryset = super().get_queryset(*args, **kwargs)
@@ -39,7 +48,7 @@ class ClientsDetailView(DetailView):
     #     return obj
 
 
-class ClientsUpdateView(UpdateView):
+class ClientsUpdateView(LoginRequiredMixin, UpdateView):
     model = Clients
     fields = ('name', 'father_name', 'surname', 'comments', 'email')
     template_name = 'clients/clients_form.html'
@@ -58,6 +67,6 @@ class ClientsUpdateView(UpdateView):
         return reverse('clients:view', args=[self.kwargs.get('pk')])
 
 
-class ClientsDeleteView(DeleteView):
+class ClientsDeleteView(LoginRequiredMixin, DeleteView):
     model = Clients
     success_url = reverse_lazy('clients:list')

@@ -9,18 +9,15 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            Имя: "{{ object.name }}"
+                            Материал "{{ object.title }}" ({{object.slug}})
                         </h3>
                         <div class="card-body">
                             <p>
-                                Фамилия: {{ object.surname }}
+                               {{ object.body }}
                             </p>
-                            <p>
-                                Почта: {{ object.email }}
-                            </p>
-                            <p>
-                                Комментарий: {{ object.comments }}
-                            </p>
+                            <div class="card-footer">
+                                Просмотры: {{object.view_num}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -32,5 +29,5 @@
 {% endblock %}
 
 {% block title %}
-Материал
+    Материал
 {% endblock %}
