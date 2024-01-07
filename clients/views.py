@@ -1,7 +1,10 @@
+from random import sample
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
+from blog.models import Blog
 from clients.models import Clients
 from pytils.translit import slugify
 
@@ -26,26 +29,9 @@ class ClientsListView(LoginRequiredMixin, ListView):
     template_name = 'clients/clients_list.html'
     context_object_name = 'client_list'
 
-    # def get_queryset(self):
-    #     # Фильтруем клиентов по пользователю (owner) текущего пользователя
-    #     return super().get_queryset().filter(
-    #         owner=self.request.user
-    #     )
-
-    # def get_queryset(self, *args, **kwargs):
-    #     queryset = super().get_queryset(*args, **kwargs)
-    #     queryset = queryset.filter(publication=True)
-    #     return queryset
-
 
 class ClientsDetailView(DetailView):
     model = Clients
-
-    # def get_object(self, queryset=None):
-    #     obj = super().get_object(queryset)
-    #     obj.view_num += 1
-    #     obj.save()
-    #     return obj
 
 
 class ClientsUpdateView(LoginRequiredMixin, UpdateView):
@@ -70,3 +56,20 @@ class ClientsUpdateView(LoginRequiredMixin, UpdateView):
 class ClientsDeleteView(LoginRequiredMixin, DeleteView):
     model = Clients
     success_url = reverse_lazy('clients:list')
+
+
+def blog_view(request):
+    all_blog_objects = Blog.objects.all()
+    random_blog_objects = sample(list(all_blog_objects), 3)
+    return render(request, 'clients/main.html', {'blog_objects': random_blog_objects})
+
+
+class View_blogDetailView(DetailView):
+    model = Blog
+    template_name = 'clients/view_blog_detail.html'
+
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        obj.view_num += 1
+        obj.save()
+        return obj

@@ -26,6 +26,12 @@ class BlogListView(ListView):
         queryset = queryset.filter(publication=True)
         return queryset
 
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        obj.view_num += 1
+        obj.save()
+        return obj
+
 
 class BlogDetailView(DetailView):
     model = Blog

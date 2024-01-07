@@ -1,0 +1,32 @@
+{% extends 'clients/base.html' %}
+{% block content %}
+
+
+<div class="row">
+    <div class="-col-12">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Материал: {{ object.title }}
+                        <div class="card-body">
+                            <p>
+                               {{ object.body }}
+                            </p>
+                            <div class="card-footer">
+                                Просмотры: {{object.view_num}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block title %}
+    Материал
+{% endblock %}
