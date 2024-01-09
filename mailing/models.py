@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.utils.datetime_safe import datetime
 
 from users.models import User
@@ -34,11 +35,16 @@ class Mailing(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Владелец', default=1)
 
     def save(self, *args, **kwargs):
-        # Если владелец не установлен, установите его в текущего вошедшего в систему пользователя
+        # Если владелец не установлен, устанавливаем его в текущего вошедшего в систему пользователя
         if not self.owner_id:
             user = self.request.user
             if user:
                 self.owner = user
+        now = timezone.now()
+        # Проверка, находится ли дата в пределах допустимого диапазона
+        if self.mailing_start_time > now or self.mailing_stop_time < now:
+            self.status = self.STATUS_DONE
+
         super().save(*args, **kwargs)
 
     def __str__(self):

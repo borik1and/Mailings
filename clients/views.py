@@ -8,6 +8,8 @@ from blog.models import Blog
 from clients.models import Clients
 from pytils.translit import slugify
 
+from mailing.models import Mailing
+
 
 class ClientsCreateView(CreateView):
     model = Clients
@@ -58,10 +60,22 @@ class ClientsDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('clients:list')
 
 
-def blog_view(request):
-    all_blog_objects = Blog.objects.all()
-    random_blog_objects = sample(list(all_blog_objects), 3)
-    return render(request, 'clients/main.html', {'blog_objects': random_blog_objects})
+class BlogView(ListView):
+    template_name = 'clients/main.html'
+    model = Blog
+    context_object_name = 'blog_objects'
+    paginate_by = 3
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['client_list'] = Clients.objects.values('name', 'email', 'creation_date').distinct()
+        context['mailing'] = Mailing.objects.values('subject', 'status')
+        context['mailing_status'] = Mailing.objects.values('subject', 'status').filter(status__in=['created', 'started'])
+        return context
+
+    def get_queryset(self):
+        all_blog_objects = Blog.objects.all()
+        return sample(list(all_blog_objects), 3)
 
 
 class View_blogDetailView(DetailView):

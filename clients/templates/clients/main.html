@@ -1,6 +1,16 @@
 {% extends 'clients/base.html' %}
 {% block content %}
 <div class="row">
+    <div class="card">
+    <div class="col-12">
+            <div class="col-3"> Количество рассылок всего: {{ mailing|length }}</div>
+            <div class="col-3">Количество активных рассылок: {{ mailing_status|length }}</div>
+            <div class="col-3">Количество уникальных клиентов для рассылок:{{ client_list|length }}</div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
     {% for blog_object in blog_objects %}
         <div class="col-md-4">
             <div class="card mb-4 box-shadow">

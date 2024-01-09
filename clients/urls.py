@@ -2,13 +2,13 @@ from django.urls import path
 from django.views.decorators.cache import cache_page
 
 from clients.views import ClientsListView, ClientsDetailView, ClientsUpdateView, ClientsDeleteView, ClientsCreateView, \
-    blog_view, View_blogDetailView
+    View_blogDetailView, BlogView
 
 app_name = 'clients'
 
 
 urlpatterns = [
-    path('main/', blog_view, name='main'),
+    path('main/', BlogView.as_view(), name='main'),
     path('view_blog/<int:pk>/', View_blogDetailView.as_view(), name='view_blog'),
     path('create/', ClientsCreateView.as_view(), name='create'),
     path('list/', cache_page(60)(ClientsListView.as_view()), name='list'),
