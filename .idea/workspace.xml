@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f53630b-ddc2-4cac-8b4d-f81033249b36" name="Changes" comment="add main blog page w random 3 blogs">
+    <list default="true" id="6f53630b-ddc2-4cac-8b4d-f81033249b36" name="Changes" comment="adding cache in deg mailing_log">
+      <change afterPath="$PROJECT_DIR$/users/management/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/management/commands/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/management/commands/ccontent_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/templates/clients/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/clients/templates/clients/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mailing/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailing/templates/mailing/mailing_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/templates/mailing/mailing_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mailing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailing/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -64,6 +66,7 @@
       <recent name="$PROJECT_DIR$/mailing/templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/users/management/commands" />
       <recent name="$PROJECT_DIR$/mailing" />
       <recent name="$PROJECT_DIR$/mailing/templates/mailing" />
       <recent name="$PROJECT_DIR$/clients/templates/clients" />
@@ -258,7 +261,23 @@
       <option name="project" value="LOCAL" />
       <updated>1704639652834</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="add looks jn maim.html">
+      <option name="closed" value="true" />
+      <created>1704824278940</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1704824278940</updated>
+    </task>
+    <task id="LOCAL-00020" summary="adding cache in deg mailing_log">
+      <option name="closed" value="true" />
+      <created>1704974234062</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1704974234062</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -270,6 +289,8 @@
     <MESSAGE value="changing users app" />
     <MESSAGE value="changing blog app" />
     <MESSAGE value="add main blog page w random 3 blogs" />
-    <option name="LAST_COMMIT_MESSAGE" value="add main blog page w random 3 blogs" />
+    <MESSAGE value="add looks jn maim.html" />
+    <MESSAGE value="adding cache in deg mailing_log" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding cache in deg mailing_log" />
   </component>
 </project>
