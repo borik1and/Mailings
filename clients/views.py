@@ -1,13 +1,10 @@
 from random import sample
-
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from blog.models import Blog
 from clients.models import Clients
 from pytils.translit import slugify
-
 from mailing.models import Mailing
 
 
@@ -70,7 +67,8 @@ class BlogView(ListView):
         context = super().get_context_data(**kwargs)
         context['client_list'] = Clients.objects.values('name', 'email', 'creation_date').distinct()
         context['mailing'] = Mailing.objects.values('subject', 'status')
-        context['mailing_status'] = Mailing.objects.values('subject', 'status').filter(status__in=['created', 'started'])
+        context['mailing_status'] = Mailing.objects.values('subject', 'status').filter(
+            status__in=['created', 'started'])
         return context
 
     def get_queryset(self):

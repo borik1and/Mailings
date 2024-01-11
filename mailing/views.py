@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.core.cache import cache
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
@@ -29,19 +30,17 @@ class MailingListView(LoginRequiredMixin, ListView):
 
 
 def mailing_log(request):
-    logs = EmailLog.objects.all()
+    key = 'logs'
+    logs = cache.get(key)
+    if logs is None:
+        logs = EmailLog.objects.all()
+        cache.set(key, logs)
     return render(request, 'mailing/mailing_loglist.html', {'logs': logs})
 
 
 class MailingDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Mailing
     permission_required = 'mailing.detail_mailing'
-
-    # def get_object(self, queryset=None):
-    #     obj = super().get_object(queryset)
-    #     obj.view_num += 1
-    #     obj.save()
-    #     return obj
 
 
 class MailingUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
